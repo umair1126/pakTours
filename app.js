@@ -13,6 +13,7 @@ const appError = require("./controller/appError");
 const globalErrorHandler = require("./controller/errorController");
 const cookieParser = require("cookie-parser");
 
+//start express app
 const app = express();
 
 //server side rendering template engine pug set
