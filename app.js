@@ -6,6 +6,7 @@ const reviewRouter = require("./routers/reviewRoutes");
 const viewRouter = require("./routers/viewRoutes");
 const bookingRouter = require("./routers/bookingRoutes");
 const helmet = require("helmet");
+const compression = require("compression");
 const rateLimit = require("express-rate-limit");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
@@ -44,6 +45,8 @@ const limit = rateLimit({
 });
 
 app.use("/api", limit);
+
+app.use(compression());
 
 app.use((req, res, next) => {
   console.log(req.cookies);
