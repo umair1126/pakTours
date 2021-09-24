@@ -20,13 +20,13 @@ mongoose
     console.log(`DB connection is successfully build`);
   })
   .catch((err) => {
-    console.log(`sorry! DB connection failed!`);
+    //console.log(`sorry! DB connection failed!`);
     console.log(err);
   });
 
 //console.log(tours);
 
-console.log(process.argv);
+//console.log(process.argv);
 
 app.listen(port, "127.0.0.1", () => {
   console.log(`the port ${port} is to be listening`);

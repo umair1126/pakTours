@@ -12,13 +12,13 @@ exports.getOverview = catchAsync(async (req, res, next) => {
 
 exports.getTour = catchAsync(async (req, res, next) => {
   //1: get the data from requested tour including reviews and guides
-  console.log(req.params.slug);
+  //console.log(req.params.slug);
   const tour = await Tour.findOne({ slug: req.params.slug }).populate({
     path: "reviews",
     fields: "review rating user",
   });
 
-  console.log("slug: ", tour);
+  //console.log("slug: ", tour);
   res.status(200).render("tour", {
     title: "hunza khanrab tour",
     tour,

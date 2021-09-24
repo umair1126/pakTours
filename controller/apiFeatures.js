@@ -22,7 +22,7 @@ class APIFeatures {
       delete queryObj[val];
     });
     //console.log({ ...this.queryString });
-    console.log(this.queryString, queryObj);
+    //console.log(this.queryString, queryObj);
     return this;
   }
 
@@ -36,10 +36,10 @@ class APIFeatures {
   }
 
   limitingFields() {
-    console.log(this.queryString.fields);
+    //console.log(this.queryString.fields);
     if (this.queryString.fields) {
       const fields = this.queryString.fields.split(",").join(" ");
-      console.log(fields);
+      //console.log(fields);
       this.query = this.query.select(fields);
     } else {
       this.query = this.query.select("-__v");

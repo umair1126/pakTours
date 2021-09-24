@@ -6679,7 +6679,7 @@ var hideAlert = function hideAlert() {
 exports.hideAlert = hideAlert;
 
 var showAlert = function showAlert(type, msg) {
-  console.log(type, " ye hai", msg);
+  //console.log(type, " ye hai", msg);
   hideAlert();
   var markup = "<div class='alert alert--".concat(type, "'>").concat(msg, "</div>");
   document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
@@ -6701,7 +6701,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var url = "http://127.0.0.1:7000/api/u1/users/login";
+var url = "/api/u1/users/login";
 
 var login = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(email, password) {
@@ -6710,9 +6710,8 @@ var login = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            console.log(email, password);
-            _context.prev = 1;
-            _context.next = 4;
+            _context.prev = 0;
+            _context.next = 3;
             return fetch(url, {
               method: "POST",
               headers: {
@@ -6725,18 +6724,17 @@ var login = /*#__PURE__*/function () {
               })
             });
 
-          case 4:
+          case 3:
             res = _context.sent;
-            console.log(res);
-            _context.next = 8;
+            _context.next = 6;
             return res.json();
 
-          case 8:
+          case 6:
             r = _context.sent;
-            console.log(r);
 
+            //console.log(r);
             if (r.status === "success") {
-              console.log("entering");
+              //console.log("entering");
               (0, _alerts.showAlert)("success", "logged in successfully!");
               window.setTimeout(function () {
                 location.assign("/");
@@ -6746,20 +6744,20 @@ var login = /*#__PURE__*/function () {
               (0, _alerts.showAlert)("error", "invalid login info!");
             }
 
-            _context.next = 16;
+            _context.next = 13;
             break;
 
-          case 13:
-            _context.prev = 13;
-            _context.t0 = _context["catch"](1);
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context["catch"](0);
             console.log(_context.t0);
 
-          case 16:
+          case 13:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[1, 13]]);
+    }, _callee, null, [[0, 10]]);
   }));
 
   return function login(_x, _x2) {
@@ -6776,36 +6774,35 @@ var logout = /*#__PURE__*/function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            console.log("logouting");
-            _context2.prev = 1;
-            _context2.next = 4;
-            return fetch("http://127.0.0.1:7000/api/u1/users/logout", {
+            _context2.prev = 0;
+            _context2.next = 3;
+            return fetch("/api/u1/users/logout", {
               method: "GET"
             });
 
-          case 4:
+          case 3:
             res = _context2.sent;
-            _context2.next = 7;
+            _context2.next = 6;
             return res.json();
 
-          case 7:
+          case 6:
             r = _context2.sent;
             console.log(r);
             if (r.status === "success") location.assign("/");
-            _context2.next = 15;
+            _context2.next = 14;
             break;
 
-          case 12:
-            _context2.prev = 12;
-            _context2.t0 = _context2["catch"](1);
+          case 11:
+            _context2.prev = 11;
+            _context2.t0 = _context2["catch"](0);
             console.log(_context2.t0);
 
-          case 15:
+          case 14:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[1, 12]]);
+    }, _callee2, null, [[0, 11]]);
   }));
 
   return function logout() {
@@ -42218,16 +42215,15 @@ var updateData = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            console.log("updating", data);
-            _context.prev = 1;
+            _context.prev = 0;
 
             if (!(type === "password")) {
-              _context.next = 15;
+              _context.next = 14;
               break;
             }
 
-            url = "http://127.0.0.1:7000/api/u1/users/updatepassword";
-            _context.next = 6;
+            url = "/api/u1/users/updatepassword";
+            _context.next = 5;
             return fetch(url, {
               method: "PATCH",
               headers: {
@@ -42239,13 +42235,13 @@ var updateData = /*#__PURE__*/function () {
               })
             });
 
-          case 6:
+          case 5:
             response = _context.sent;
             console.log(response);
-            _context.next = 10;
+            _context.next = 9;
             return response.json();
 
-          case 10:
+          case 9:
             res = _context.sent;
             console.log(res);
 
@@ -42255,19 +42251,19 @@ var updateData = /*#__PURE__*/function () {
               (0, _alerts.showAlert)("error", res.message);
             }
 
-            _context.next = 21;
+            _context.next = 20;
             break;
 
-          case 15:
-            url = "http://127.0.0.1:7000/api/u1/users/updateme";
-            _context.next = 18;
+          case 14:
+            url = "/api/u1/users/updateme";
+            _context.next = 17;
             return (0, _axios.default)({
               method: "PATCH",
               url: url,
               data: data
             });
 
-          case 18:
+          case 17:
             _res = _context.sent;
             console.log(_res);
 
@@ -42279,21 +42275,21 @@ var updateData = /*#__PURE__*/function () {
               (0, _alerts.showAlert)("error", "something went wrong");
             }
 
-          case 21:
-            _context.next = 26;
+          case 20:
+            _context.next = 25;
             break;
 
-          case 23:
-            _context.prev = 23;
-            _context.t0 = _context["catch"](1);
+          case 22:
+            _context.prev = 22;
+            _context.t0 = _context["catch"](0);
             console.log(_context.t0);
 
-          case 26:
+          case 25:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[1, 23]]);
+    }, _callee, null, [[0, 22]]);
   }));
 
   return function updateData(_x, _x2) {
@@ -42316,7 +42312,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var url = "http://127.0.0.1:7000/api/u1/users/signup";
+var url = "/api/u1/users/signup";
 
 var signUp = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(name, email, password, confirmPassword) {
@@ -42325,9 +42321,8 @@ var signUp = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            console.log(name, email, password, confirmPassword);
-            _context.prev = 1;
-            _context.next = 4;
+            _context.prev = 0;
+            _context.next = 3;
             return fetch(url, {
               method: "POST",
               headers: {
@@ -42342,18 +42337,17 @@ var signUp = /*#__PURE__*/function () {
               })
             });
 
-          case 4:
+          case 3:
             res = _context.sent;
             console.log(res);
-            _context.next = 8;
+            _context.next = 7;
             return res.json();
 
-          case 8:
+          case 7:
             r = _context.sent;
             console.log(r);
 
             if (r.status === "success") {
-              console.log("entering");
               (0, _alerts.showAlert)("success", "SignUp successfully!");
               window.setTimeout(function () {
                 location.assign("/");
@@ -42363,20 +42357,20 @@ var signUp = /*#__PURE__*/function () {
               (0, _alerts.showAlert)("error", r.message);
             }
 
-            _context.next = 16;
+            _context.next = 15;
             break;
 
-          case 13:
-            _context.prev = 13;
-            _context.t0 = _context["catch"](1);
+          case 12:
+            _context.prev = 12;
+            _context.t0 = _context["catch"](0);
             console.log(_context.t0);
 
-          case 16:
+          case 15:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[1, 13]]);
+    }, _callee, null, [[0, 12]]);
   }));
 
   return function signUp(_x, _x2, _x3, _x4) {
@@ -42664,7 +42658,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-console.log("hello from index.js");
 //import { bookTour } from "./stripe";
 // Dom elements
 var mapbox = document.getElementById("map");
@@ -42676,8 +42669,8 @@ var signUpForm = document.querySelector(".form--signup"); //const bookBtn = docu
 // Delegation
 
 if (mapbox) {
-  var locations = JSON.parse(mapbox.dataset.locations);
-  console.log(locations);
+  var locations = JSON.parse(mapbox.dataset.locations); //console.log(locations);
+
   (0, _mapbox.displayMap)(locations);
 }
 
@@ -42759,7 +42752,7 @@ if (updateUser) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              console.log("submiting");
+              //console.log("submiting");
               e.preventDefault();
               document.querySelector(".btn--save").textContent = "Saving...";
               form = new FormData();
@@ -42769,13 +42762,13 @@ if (updateUser) {
               form.append("name", name);
               form.append("email", email);
               form.append("photo", photo);
-              _context3.next = 12;
+              _context3.next = 11;
               return (0, _updateSetting.updateData)(form, "data");
 
-            case 12:
+            case 11:
               document.querySelector(".btn--save").textContent = "SAVE SETTINGS";
 
-            case 13:
+            case 12:
             case "end":
               return _context3.stop();
           }
@@ -42798,25 +42791,25 @@ if (updatePassword) {
           switch (_context4.prev = _context4.next) {
             case 0:
               e.preventDefault();
-              document.querySelector(".btn--save-password").textContent = "Updating...";
-              console.log("password updating");
+              document.querySelector(".btn--save-password").textContent = "Updating..."; //console.log("password updating");
+
               passwordCurrent = document.getElementById("password-current").value;
               newPassword = document.getElementById("password").value;
               passwordConfirm = document.getElementById("password-confirm").value;
-              _context4.next = 8;
+              _context4.next = 7;
               return (0, _updateSetting.updateData)({
                 passwordCurrent: passwordCurrent,
                 newPassword: newPassword,
                 passwordConfirm: passwordConfirm
               }, "password");
 
-            case 8:
+            case 7:
               document.querySelector(".btn--save-password").textContent = "Save password";
               document.getElementById("password-current").value = "";
               document.getElementById("password").value = "";
               document.getElementById("password-confirm").value = "";
 
-            case 12:
+            case 11:
             case "end":
               return _context4.stop();
           }
@@ -42864,7 +42857,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56011" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58288" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

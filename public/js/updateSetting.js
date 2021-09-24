@@ -2,11 +2,11 @@ import { showAlert } from "./alerts";
 import axios from "axios";
 
 export const updateData = async (data, type) => {
-  console.log("updating", data);
+  //console.log("updating", data);
   let url;
   try {
     if (type === "password") {
-      url = "http://127.0.0.1:7000/api/u1/users/updatepassword";
+      url = "/api/u1/users/updatepassword";
       const response = await fetch(url, {
         method: "PATCH",
         headers: {
@@ -26,7 +26,7 @@ export const updateData = async (data, type) => {
         showAlert("error", res.message);
       }
     } else {
-      url = "http://127.0.0.1:7000/api/u1/users/updateme";
+      url = "/api/u1/users/updateme";
       const res = await axios({
         method: "PATCH",
         url,

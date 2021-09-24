@@ -1,5 +1,3 @@
-console.log("hello from index.js");
-
 import "@babel/polyfill";
 import { login, logout } from "./login";
 import { displayMap } from "./mapbox";
@@ -19,7 +17,7 @@ const signUpForm = document.querySelector(".form--signup");
 // Delegation
 if (mapbox) {
   const locations = JSON.parse(mapbox.dataset.locations);
-  console.log(locations);
+  //console.log(locations);
 
   displayMap(locations);
 }
@@ -54,7 +52,7 @@ if (logoutBtn) {
 
 if (updateUser) {
   updateUser.addEventListener("submit", async (e) => {
-    console.log("submiting");
+    //console.log("submiting");
     e.preventDefault();
     document.querySelector(".btn--save").textContent = "Saving...";
 
@@ -77,7 +75,7 @@ if (updatePassword) {
   updatePassword.addEventListener("submit", async (e) => {
     e.preventDefault();
     document.querySelector(".btn--save-password").textContent = "Updating...";
-    console.log("password updating");
+    //console.log("password updating");
     const passwordCurrent = document.getElementById("password-current").value;
     const newPassword = document.getElementById("password").value;
     const passwordConfirm = document.getElementById("password-confirm").value;

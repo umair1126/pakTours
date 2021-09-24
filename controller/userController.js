@@ -66,8 +66,8 @@ const filterObj = (obj, ...allowedFields) => {
 // };
 
 exports.updateMe = catchAsync(async (req, res, next) => {
-  console.log("body : ", req.body);
-  console.log(req.file);
+  //console.log("body : ", req.body);
+  //console.log(req.file);
   // 1) Create error if user POSTs password data
   if (req.body.password || req.body.passwordConfirm) {
     return next(
@@ -125,7 +125,7 @@ const createSendToken = async (user, statusCode, res) => {
 // });
 
 exports.getUsers = catchAsync(async (req, res, next) => {
-  console.log(req.query);
+  //console.log(req.query);
   const feature = new APIFeatures(User.find(), req.query)
     .filter()
     .sorting()
@@ -133,7 +133,7 @@ exports.getUsers = catchAsync(async (req, res, next) => {
     .pagination();
   const users = await feature.query;
   //const users = await User.find();
-  console.log(users);
+  //console.log(users);
   if (!users) {
     return next(new appError("no user exist in the dataBase", 400));
   }
@@ -149,7 +149,7 @@ exports.getUsers = catchAsync(async (req, res, next) => {
 exports.getUserWithId = catchAsync(async (req, res, next) => {
   const ID = req.params.id;
   const user = await User.findById(ID);
-  console.log("us");
+  //console.log("us");
   if (!user) {
     return next(new appError(`invalid ID`, 404));
   } else {
@@ -165,11 +165,11 @@ exports.getUserWithId = catchAsync(async (req, res, next) => {
 exports.signUp = catchAsync(async (req, res, next) => {
   const user = await User.create(req.body);
   const url = `${req.protocol}://${req.get("host")}/me`;
-  console.log(url);
+  //console.log(url);
   await new Email(user, url).sendWelcome();
 
   createSendToken(user, 200, res);
-  console.log(user);
+  //console.log(user);
   const token = await jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
     expiresIn: process.env.EXPIRES_IN,
   });
@@ -209,9 +209,9 @@ exports.Login = catchAsync(async (req, res, next) => {
       new appError(`no user exist with ${candidate.email} email`, 404)
     );
   }
-  console.log(user);
+  //console.log(user);
   const correct = await user.correctPassword(candidate.password, user.password);
-  console.log(correct);
+  //console.log(correct);
   if (correct) {
     createSendToken(user, 200, res);
 
@@ -240,7 +240,7 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
 
   //generate the random reset token
   const resetToken = await user.createPasswordResetToken();
-  console.log("resetToken", resetToken);
+  //console.log("resetToken", resetToken);
   await user.save({ validateBeforeSave: false });
 
   //Send it users Email
@@ -256,7 +256,7 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
       message: "Token sent to the email",
     });
   } catch (error) {
-    console.log("error a rha : ", error);
+    //console.log("error a rha : ", error);
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
     await user.save({ validateBeforeSave: false });
@@ -304,10 +304,10 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
   //1: get user from collection
-  console.log("print ho rha hai", req.user);
+  //console.log("print ho rha hai", req.user);
   const user = await User.findById(req.user._id).select("+password");
-  console.log("print ho rha hai", user);
-  console.log(req.body);
+  //console.log("print ho rha hai", user);
+  //console.log(req.body);
 
   if (req.body.data.newPassword !== req.body.data.passwordConfirm)
     return next(
@@ -320,7 +320,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     user.password
   );
 
-  console.log(result);
+  //console.log(result);
   //if(result)
   if (result) {
     user.password = req.body.data.newPassword;
@@ -330,7 +330,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     return next(new appError(`your current password is wrong`, 400));
   }
 
-  console.log("everything is going ok!");
+  //console.log("everything is going ok!");
 
   //3: update changedAtPasswordAt property for the user
   //4: log the user in, send JWT
@@ -338,7 +338,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     expiresIn: process.env.EXPIRES_IN,
   });
 
-  console.log("everything is going ok!", token);
+  //console.log("everything is going ok!", token);
 
   res.status(200).json({
     status: "success",
@@ -352,7 +352,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 
 // exports.updateUserData = factory.updateUser(User);
 exports.updateUserData = catchAsync(async (req, res, next) => {
-  console.log(req.body);
+  //console.log(req.body);
   const updateUser = await User.findByIdAndUpdate(
     req.user._id,
     { name: req.body.data.name, email: req.body.data.email },
@@ -361,7 +361,7 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
       runValidators: true,
     }
   );
-  console.log(updateUser);
+  //console.log(updateUser);
   if (updateUser) {
     res.status(200).json({
       status: "success",
@@ -388,7 +388,7 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user._id).select("+password");
   //if (!user) return next(new appError(`!invalid email`));
   const result = await user.correctPassword(req.body.password, user.password);
-  console.log(result);
+  //console.log(result);
   if (result) {
     await User.findByIdAndDelete(user._id);
     //console.log(deleteUser);

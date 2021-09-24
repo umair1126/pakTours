@@ -91,12 +91,12 @@ exports.updateOne = (Model) =>
 
 exports.updateUser = () =>
   catchAsync(async (req, res, next) => {
-    console.log("entering...");
+    //console.log("entering...");
     const { name, city } = req.body;
     if (!name || !city) {
       return next(new appError(`name and city should require for update`));
     }
-    console.log("entering2....");
+    //console.log("entering2....");
     const user = req.user;
     user.name = name;
     user.city = city;
