@@ -52,7 +52,7 @@ app.use((req, res, next) => {
   console.log(req.cookies);
   next();
 });
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 7000;
 
 app.use("/", viewRouter);
 app.use("/api/u1/users", userRouter);
