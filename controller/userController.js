@@ -170,9 +170,9 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
   createSendToken(user, 200, res);
   //console.log(user);
-  const token = await jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
-    expiresIn: process.env.EXPIRES_IN,
-  });
+  // const token = await jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
+  //   expiresIn: process.env.EXPIRES_IN,
+  // });
   res.status(201).json({
     status: "success",
     message: "successfully signUp",
