@@ -1,5 +1,5 @@
 import { showAlert } from "./alerts";
-const url = "http://127.0.0.1/api/u1/users/signup";
+const url = "/api/u1/users/signup";
 
 export const signUp = async (name, email, password, confirmPassword) => {
   //console.log(name, email, password, confirmPassword);

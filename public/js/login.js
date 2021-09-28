@@ -1,4 +1,4 @@
-const url = "http://127.0.0.1:7000/api/u1/users/login";
+const url = "/api/u1/users/login";
 import { showAlert } from "./alerts";
 
 export const login = async (email, password) => {
@@ -36,7 +36,7 @@ export const login = async (email, password) => {
 export const logout = async () => {
   //console.log("logouting");
   try {
-    const res = await fetch("http://127.0.0.1/api/u1/users/logout", {
+    const res = await fetch("/api/u1/users/logout", {
       method: "GET",
     });
     const r = await res.json();
