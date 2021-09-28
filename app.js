@@ -65,4 +65,4 @@ app.all("*", (req, res, next) => {
 
 app.use(globalErrorHandler);
 
-module.exports = { app, port };
+module.exports = { app };
