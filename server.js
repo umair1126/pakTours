@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const fs = require("fs");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
-const { port, app } = require("./app");
+const { app } = require("./app");
 
 const DB = process.env.DATABASE;
 
@@ -25,6 +25,6 @@ mongoose
 
 //console.log(process.argv);
 
-app.listen(port, "127.0.0.1", () => {
+app.listen(process.env.PORT, () => {
   console.log(`the port ${port} is to be listening`);
 });
