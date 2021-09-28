@@ -6701,7 +6701,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var url = "/api/u1/users/login";
+var url = "http://127.0.0.1:7000/api/u1/users/login";
 
 var login = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(email, password) {
@@ -6776,7 +6776,7 @@ var logout = /*#__PURE__*/function () {
           case 0:
             _context2.prev = 0;
             _context2.next = 3;
-            return fetch("/api/u1/users/logout", {
+            return fetch("http://127.0.0.1/api/u1/users/logout", {
               method: "GET"
             });
 
@@ -42222,7 +42222,7 @@ var updateData = /*#__PURE__*/function () {
               break;
             }
 
-            url = "/api/u1/users/updatepassword";
+            url = "http://127.0.0.1/api/u1/users/updatepassword";
             _context.next = 5;
             return fetch(url, {
               method: "PATCH",
@@ -42255,7 +42255,7 @@ var updateData = /*#__PURE__*/function () {
             break;
 
           case 14:
-            url = "/api/u1/users/updateme";
+            url = "http://127.0.0.1/api/u1/users/updateme";
             _context.next = 17;
             return (0, _axios.default)({
               method: "PATCH",
@@ -42312,7 +42312,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var url = "/api/u1/users/signup";
+var url = "http://127.0.0.1/api/u1/users/signup";
 
 var signUp = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(name, email, password, confirmPassword) {
@@ -42857,7 +42857,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58288" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49958" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

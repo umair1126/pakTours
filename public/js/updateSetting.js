@@ -6,7 +6,7 @@ export const updateData = async (data, type) => {
   let url;
   try {
     if (type === "password") {
-      url = "/api/u1/users/updatepassword";
+      url = "http://127.0.0.1/api/u1/users/updatepassword";
       const response = await fetch(url, {
         method: "PATCH",
         headers: {
@@ -26,7 +26,7 @@ export const updateData = async (data, type) => {
         showAlert("error", res.message);
       }
     } else {
-      url = "/api/u1/users/updateme";
+      url = "http://127.0.0.1/api/u1/users/updateme";
       const res = await axios({
         method: "PATCH",
         url,
